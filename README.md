@@ -1,2 +1,2 @@
 # streamlit
-number squence graphs
+number sequence graphs
