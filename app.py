@@ -109,13 +109,18 @@ st.subheader("Sequence")
 df=pd.DataFrame(r)
 #to_string(index=False)
 st.write(df.transpose())
-
-st.subheader("Line Chart")
-st.line_chart(df)
-
 l=[[i+1,v] for i,v in enumerate(r)]
 
-st.subheader("Scatter Plot")
-df = pd.DataFrame(l,columns=['a', 'b'])
-c = alt.Chart(df, height=500).mark_circle().encode(x='a', y='b')
-st.write(c)
+op = ("Line Chart","Bar Chart","Area Chart","Scatter Plot")
+sb = st.selectbox("Select a Garph", op, 0)
+st.subheader(sb)
+if sb=="Line Chart":
+    st.line_chart(df)
+elif sb=="Bar Chart":
+    st.bar_chart(df)
+elif sb=="Area Chart":
+    st.area_chart(df)
+elif sb=="Scatter Plot":
+    df = pd.DataFrame(l,columns=['a', 'b'])
+    c = alt.Chart(df, height=500).mark_circle().encode(x='a', y='b')
+    st.write(c)
